@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conexão Imobiliária SC</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: black;
+            color: white;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: rgba(20, 20, 20, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+        h1 {
+            color: #f1c40f;
+        }
+        p {
+            color: #bdc3c7;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background: #222;
+            color: white;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        select {
+            cursor: pointer;
+        }
+        button {
+            background-color: #f1c40f;
+            color: black;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #d4ac0d;
+        }
+        .whatsapp {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            background: #25d366;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Encontre seu imóvel dos sonhos!</h1>
+    <p>Preencha o formulário e nossa equipe entrará em contato pelo WhatsApp.</p>
+    <form id="leadForm">
+        <input type="text" id="name" placeholder="Seu nome" required>
+        <input type="email" id="email" placeholder="Seu e-mail" required>
+        <input type="tel" id="phone" placeholder="Seu WhatsApp" required>
+        <select id="propertyType" required>
+            <option value="" disabled selected>Tipo de imóvel</option>
+            <option value="Casa">Casa</option>
+            <option value="Sitio">Sítio</option>
+        </select>
+        <select id="entryValue" required>
+            <option value="" disabled selected>Valor disponível para entrada</option>
+            <option value="Menos de 50 mil">Menos de 50 mil</option>
+            <option value="50 mil - 100 mil">50 mil - 100 mil</option>
+            <option value="100 mil - 200 mil">100 mil - 200 mil</option>
+            <option value="Acima de 200 mil">Acima de 200 mil</option>
+        </select>
+        <button type="submit">Enviar</button>
+    </form>
+    <a href="https://wa.me/SEUNUMERO" class="whatsapp">Fale conosco no WhatsApp</a>
+</div>
+
+<script>
+    document.getElementById('leadForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var name = document.getElementById('name').value.trim();
+        var email = document.getElementById('email').value.trim();
+        var phone = document.getElementById('phone').value.trim();
+        var propertyType = document.getElementById('propertyType').value;
+        var entryValue = document.getElementById('entryValue').value;
+
+        if (!name || !email || !phone || !propertyType || !entryValue) {
+            alert('Por favor, preencha todos os campos obrigatórios.');
+            return;
+        }
+
+        var whatsappUrl = `https://wa.me/14982325360?text=Olá, meu nome é ${name}. Tenho interesse em um(a) ${propertyType} e tenho disponível ${entryValue} para entrada.`;
+        window.location.href = whatsappUrl;
+    });
+</script>
+</body>
+</html>
